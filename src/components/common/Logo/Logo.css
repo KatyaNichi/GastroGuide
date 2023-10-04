@@ -1,0 +1,12 @@
+
+.logo{
+    font-family: 'Arima', cursive;
+    font-size: 2.5rem;
+    margin-left: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .logo{
+margin-left: 2rem;
+}
+}

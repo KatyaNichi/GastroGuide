@@ -1,0 +1,41 @@
+.filters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.2rem;
+    justify-content: space-around;
+
+    width: 98%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+.filters h4 {
+    margin-bottom: 1rem;
+}
+.filters .active {
+    color: #408EBA;
+  }
+.filters .active{
+    color: #408EBA;
+}
+.listOfDiets{
+    display: flex;
+    gap: 0.7rem;
+   width: 100%;
+    color: #969696;
+    flex-wrap: wrap;
+}
+.listOfDiets label {
+    cursor: pointer;
+}
+.filters option {
+    color: #969696;
+}
+
+@media (max-width: 1024px) {
+    .filters {
+        width: 90%;
+    }
+  }
+  
+ 

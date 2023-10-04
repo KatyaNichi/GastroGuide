@@ -1,0 +1,21 @@
+.categories-grid {
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    grid-template-rows: repeat(4, auto);
+    gap: 3rem;
+}
+.time-description{
+    color: #969696;
+}
+@media (max-width: 1024px) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 45%);
+    }
+  }
+  @media (max-width: 767px) {
+    .categories-grid {
+        grid-template-columns: repeat(1, 95%);
+    }
+  }
+  

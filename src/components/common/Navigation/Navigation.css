@@ -1,0 +1,36 @@
+
+.navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    font-size: 1.5rem;
+    margin-left: 3rem;
+}
+.navlink{
+    color: #969696;
+    position: relative;
+    margin-right: 2rem;
+}
+.navlink:hover {
+  color: #408EBA;
+}
+.navlink.active {
+  border-radius: 1rem;
+  color: #404040;
+}
+.myButton{
+    height: 30px;
+    width: 80px;
+  }
+.play{
+  background-color: green;
+}
+.pause{
+  background-color: red;
+}
+
+  @media (max-width: 1024px) {
+    .navigation{
+        display: none;
+    }
+  }

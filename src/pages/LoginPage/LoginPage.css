@@ -1,0 +1,52 @@
+.main-login{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 95%;
+    margin: 0 auto;
+    gap: 3%;
+    font-family: 'Roboto', sans-serif;
+}
+.login-page-container h2{
+    text-align: center;
+    font-size: 2rem;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+}
+.login-form-container{
+    width: 40%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+.login-form-container  input{
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
+
+  @media (max-width: 1023px) {
+    .login-form-container{
+        width: 60%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .main-login{
+        flex-direction: column;
+    }
+    .login-form-container{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .login-page-container h2{
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    .centered-form{
+        width: 70%;
+    }
+    .centered-form div input{
+        width: 100%;
+    }
+  }

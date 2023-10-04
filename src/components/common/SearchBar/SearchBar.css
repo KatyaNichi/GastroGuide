@@ -1,0 +1,31 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 0.4rem;
+    border-radius: 1.5rem;
+    width: 25%;
+    margin-right: 2rem;
+  }
+input[type="text"] {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0.4rem;
+  border-radius: 1.5rem;
+  background-color: #F0F7FF;
+}  
+.search-icon {
+  font-size: 1.2rem;
+  margin-left: 1rem;
+}
+
+   @media (max-width: 1024px) {
+    .search-icon {
+      font-size: 1rem;
+      margin-left: -1rem;
+    }
+    input[type="text"] {
+      width: 100%;
+    }
+  }

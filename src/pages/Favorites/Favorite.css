@@ -1,0 +1,11 @@
+.favorites-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.favorites-page p{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}

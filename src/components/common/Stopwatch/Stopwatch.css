@@ -1,0 +1,60 @@
+.stopwatch{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-evenly;
+    width: 80%;
+    border: 2px solid white;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    cursor: pointer; 
+}
+.timerBtn {
+    padding: 0.3rem;
+    color: #408EBA;
+    border: 2px solid #408EBA;
+    border-radius: 1rem;
+    margin: 0 1rem 0 0;
+    font-size: 1rem;
+    width: 4rem;
+    display: inline-block;
+    text-align: center;
+    background-color: #F0F7FF;
+}
+.disabled{
+    color: #ccc;
+  border-color: #ccc; 
+  background-color: #eee; 
+  cursor: not-allowed; 
+  pointer-events: none; 
+}
+
+@media (max-width: 1023px) {
+    .stopwatch{
+        align-items: baseline;
+        width: 90%;
+    }
+    }
+@media (max-width: 767px) {
+    .stopwatch{
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 80%;
+        border: 2px solid white;
+        border-radius: 1rem;
+        margin-top: 2rem;
+        padding: 1rem;
+    }
+    .buttons{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1rem;    
+    }
+    .buttons button{
+        margin-top: 1rem;
+        padding: 1rem 0;
+    }
+}

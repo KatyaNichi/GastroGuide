@@ -1,0 +1,14 @@
+button {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 1rem;
+    margin: 0 0.6rem;
+    border-radius: 1rem;
+}
+
+  @media (max-width: 1024px) {
+ .header .profileBtn{
+  display: none;
+ }
+  }
+  

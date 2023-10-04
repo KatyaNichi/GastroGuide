@@ -1,0 +1,105 @@
+.banner {
+    color: #EFE1BE;
+    display: flex;
+    justify-content: center; /* Horizontally center the child */
+    align-items: center; 
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-align: center;
+    padding: 20px;
+    width: 95%;
+    min-height: 75vh;
+    margin: 0 auto;
+    border-radius: 2rem;
+    background-image: url('https://d39l2hkdp2esp1.cloudfront.net/img/photo/154924/154924_00_2x.jpg');
+      background-size:cover;
+            -webkit-animation: slidein 100s;
+            animation: slidein 100s;
+    
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    
+            -webkit-animation-direction: alternate;
+            animation-direction: alternate;              
+    }
+    
+    @-webkit-keyframes slidein {
+    from {background-position: top; background-size:3000px; }
+    to {background-position: -100px 0px;background-size:2750px;}
+    }
+    
+    @keyframes slidein {
+    from {background-position: top;background-size:3000px; }
+    to {background-position: -100px 0px;background-size:2750px;}
+    
+    }
+
+  
+  .banner-content {
+    max-width: 60%;
+    margin: 0 auto;
+  }
+  
+  .banner h2 {
+    font-size: 3rem;
+    
+  }
+  
+  .banner p {
+    font-size: 2rem;
+    margin: 2rem 0;
+  }
+  
+  .banner-content .profileBtn {
+  
+    margin-right: 3rem;
+  }
+  .profileBtn{
+    background-color:  #EFE1BE;
+    border: none;
+    width: 8rem;
+    font-size: 1.5rem;
+    color: #A2C477;
+    box-shadow: 0 0 0.8rem #A2C477;
+    transition: 0.6s; 
+    padding: 1rem;
+  }
+  
+    .profileBtn:hover {
+      color: white;
+      width: 25%;
+      box-shadow: 0 0 20px#EFE1BE;
+      background-color:#EFE1BE;
+    }
+  
+  .register-button:hover {
+    background-color: #408EBA;
+    color: #fff;
+  }
+  
+  @media (max-width: 1024px) {
+    .banner h2 {
+      font-size: 2rem;
+    }
+    .banner-content {
+      max-width: 85%;
+    }
+    .banner p {
+      font-size: 1.5rem;
+    }
+    .banner-content .profileBtn {
+      padding: 0.5rem;
+      margin-right: 2rem;
+      display: inline-block;
+    }
+    
+  }
+  @media (max-width: 767px) {
+    .banner-content .profileBtn{
+      margin: 0 2rem 1.5rem 0;
+    }
+    
+    
+  }
