@@ -19,7 +19,7 @@ function LoginPage() {
     setIsLoggingIn(true);
   
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('/srv/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

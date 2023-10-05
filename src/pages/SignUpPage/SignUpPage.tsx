@@ -27,7 +27,7 @@ function SignUp() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/signup', {
+      const response = await fetch('/srv/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

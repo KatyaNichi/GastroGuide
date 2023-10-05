@@ -55,7 +55,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const fetchUserFavorites = useCallback(async () => {
     if (isLoggedIn && userId) {
       try {
-        const response = await fetch(`/api/favorites/user/${userId}`, {
+        const response = await fetch(`/srv/api/favorites/user/${userId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
