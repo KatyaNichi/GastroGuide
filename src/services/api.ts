@@ -1,6 +1,6 @@
 // api.ts
 export const fetchData = async <T>(endpoint: string): Promise<T> => {
-  const serverUrl = 'http://localhost:4444'; // Replace with your server's URL
+  const serverUrl = 'http://localhost:4444'; 
   try {
     const response = await fetch(`${serverUrl}/${endpoint}`);
     if (!response.ok) {

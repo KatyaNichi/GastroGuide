@@ -18,7 +18,7 @@ function RecipePage() {
   useEffect(() => {
     const fetchUserFavorites = async () => {
       try {
-        const response = await fetch(`http://localhost:4444/api/favorites/user/${userContext.userId}`);
+        const response = await fetch(`/api/favorites/user/${userContext.userId}`);
         
         if (response.ok) {
           const favoritesData = await response.json();
@@ -45,7 +45,7 @@ const toggleFavorite = useCallback(async () => {
     try {
       let response;
       if (isFavorite) {
-        response = await fetch('http://localhost:4444/api/favorites/remove', {
+        response = await fetch('/api/favorites/remove', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const toggleFavorite = useCallback(async () => {
           }),
         });
       } else {
-        response = await fetch('http://localhost:4444/api/favorites/add', {
+        response = await fetch('/api/favorites/add', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
