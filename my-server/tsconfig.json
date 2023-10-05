@@ -114,7 +114,10 @@
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "skipLibCheck": true,
+    "types": ["node", "express"]
   },
   "include": ["*.ts"],
   "exclude": ["node_modules"]
