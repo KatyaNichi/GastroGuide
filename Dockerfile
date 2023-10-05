@@ -16,5 +16,3 @@ COPY . .
 # Expose the port that the app will run on
 EXPOSE 5173
 
-# Run the TypeScript server using ts-node
-CMD ["npm", "run", "dev"]
