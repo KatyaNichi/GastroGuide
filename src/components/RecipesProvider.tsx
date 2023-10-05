@@ -1,4 +1,3 @@
-
 import React, { createContext, useEffect, useState } from 'react';
 import { Recipe } from '../../types/recipe';
 
@@ -33,7 +32,6 @@ export function RecipesProvider({ children }: { children: React.ReactNode }) {
         }
         const data: { recipes: Recipe[] } = await response.json(); 
 
-        // Assuming data.recipes is an array of recipes
         const shuffledRecipes = shuffleArray(data.recipes);
 
         setRecipes(shuffledRecipes);
