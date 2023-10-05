@@ -29,7 +29,7 @@ async function connect() {
 
 connect();
 
-//app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 app.post('/api/signup', async (req: Request, res: Response) => {
