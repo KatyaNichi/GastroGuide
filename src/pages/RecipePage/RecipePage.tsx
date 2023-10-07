@@ -16,6 +16,7 @@ function RecipePage() {
   const userContext = useContext(UserContext) as UserContextType;
   const [isFavorite, setIsFavorite] = useState(false); 
   const fallbackImage = '../../../../../assets/images/secret-dish.jpg';
+  console.log("userContext.favorites" + userContext.favorites);
 
 
   
@@ -99,6 +100,7 @@ const toggleFavorite = useCallback(async () => {
         console.log(isFavorite ? 'Removed from favorites' : 'Added to favorites');
         const updatedFavorites = [...userContext.favorites, recipeId as string];
           userContext.setFavorites(updatedFavorites);
+          console.log("updatedFavorites" + updatedFavorites)
           setIsFavorite(true);
         setIsFavorite((prevIsFavorite) => !prevIsFavorite);
     
