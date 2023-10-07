@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from '../../components/common/Header/Header';
 import { useUser } from '../../components/useUser';
 import Popup from '../../components/common/Popup/Popup';
+import { getBaseUrl } from '../../services/api';
 import './LoginPage.css';
 
 function LoginPage() {
@@ -19,7 +20,7 @@ function LoginPage() {
     setIsLoggingIn(true);
   
     try {
-      const response = await fetch('/srv/api/login', {
+      const response = await fetch(getBaseUrl('/api/login'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

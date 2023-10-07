@@ -30,6 +30,7 @@
   }
 .description {
     margin-top: 1rem;
+    font-size: 1.5rem;
 }
 .time-description{
     display: flex;
@@ -44,13 +45,15 @@
     color: #fff;
     background-color: #408EBA;
     padding: 0.5rem;
-    width: 85%;
+    width: fit-content;
+    white-space: nowrap;
     border-radius: 0.6rem;  
 }
 .bottom-card {
     display: flex;
     align-items: baseline;
     align-self: flex-end; 
+    margin: 0 auto;
 }
 .favorite-button-container::before {
     content: "";
@@ -65,4 +68,12 @@
     transition: opacity 0.3s;
     border-radius: 50%;
     height: 90%;
+  }
+
+  @media (max-width: 1023px) {
+    .view-recipe-button{
+      width: 100%;
+      border-radius: 0.6rem;  
+  }
+    
   }

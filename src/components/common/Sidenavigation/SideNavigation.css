@@ -22,7 +22,19 @@
 
   @media (max-width: 1023px) {
     .side-nav {
+      margin-top: -2.5rem;
+    }
+    .side-nav li{
+      margin-top: 3rem;
+
+    }
+  }
+
+  @media (max-width: 767px) {
+    .side-nav {
+      margin-top: -4.5rem;
       margin-left: 1rem;
     }
   }
+  
   

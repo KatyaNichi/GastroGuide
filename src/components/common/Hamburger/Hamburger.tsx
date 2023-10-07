@@ -4,9 +4,11 @@ import './Hamburger.css';
 interface HamburgerProps {
   isOpen: boolean;
   onClick: () => void;
+  isLoggedIn: boolean;
+  handleLogout: () => void;
 }
 
-const Hamburger = ({ isOpen, onClick }: HamburgerProps) => {
+const Hamburger = ({ isOpen, onClick, isLoggedIn, handleLogout }: HamburgerProps) => {
   return (
     <div className="hamburger">
       <div className={`menu-button ${isOpen ? 'open' : ''}`} onClick={onClick}>
@@ -28,8 +30,16 @@ const Hamburger = ({ isOpen, onClick }: HamburgerProps) => {
           <li><Link to='/'>Discover</Link></li>
             <li><Link to='/categories'>Categories</Link></li>
             <li><Link to='/favorites'>Favorites</Link></li>
-            <li><Link to='/login'>Log in</Link></li>
-            <li><Link to='/signup'>Sign up</Link></li>
+            {isLoggedIn ? (
+              // Display "Logout" link if the user is logged in
+              <li><Link to='/' onClick={handleLogout}>Logout</Link></li>
+            ) : (
+              // Display "Log in" and "Sign up" links if the user is logged out
+              <>
+                <li><Link to='/login'>Log in</Link></li>
+                <li><Link to='/signup'>Sign up</Link></li>
+              </>
+            )}
           </ul>
         </div>
       )}

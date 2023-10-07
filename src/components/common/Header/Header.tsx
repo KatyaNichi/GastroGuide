@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <div className="header">
-      <Hamburger isOpen={isMenuOpen} onClick={toggleMenu} />
+      <Hamburger isOpen={isMenuOpen} onClick={toggleMenu} isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
       {isMenuOpen && <div className="overlay" onClick={toggleMenu} />}
       <div className="header-top-row">
         <Logo />

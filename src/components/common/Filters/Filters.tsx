@@ -34,7 +34,7 @@ const Filters: React.FC<FiltersProps> = ({
 
   return (
     <div className="filters">
-      <div>
+      <div className='diets'>
         <h4>Diets:</h4>
         <div className='listOfDiets'>
         <label
@@ -44,17 +44,18 @@ const Filters: React.FC<FiltersProps> = ({
           Dairy Free
         </label>
         <label
-          onClick={() => handleDietsChange('gluten free')}
-          className={diets.includes('gluten free') ? 'active' : ''}
-        >
-          Gluten Free
-        </label>
-        <label
           onClick={() => handleDietsChange('lacto ovo vegetarian')}
           className={diets.includes('lacto ovo vegetarian') ? 'active' : ''}
         >
           Lacto-Ovo-Vegetarian
         </label>
+        <label
+          onClick={() => handleDietsChange('gluten free')}
+          className={diets.includes('gluten free') ? 'active' : ''}
+        >
+          Gluten Free
+        </label>
+       
         <label
           onClick={() => handleDietsChange('primal')}
           className={diets.includes('primal') ? 'active' : ''}
@@ -81,7 +82,7 @@ const Filters: React.FC<FiltersProps> = ({
         </label>
         </div>
       </div>
-      <div>
+      <div className='cuisines-list'>
         <h4>Cuisine:</h4>
         <select value={cuisine} onChange={handleCuisineChange}>
           <option value="" >Any</option>

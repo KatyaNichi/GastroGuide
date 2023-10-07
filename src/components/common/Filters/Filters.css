@@ -1,10 +1,9 @@
 .filters {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: end;
     font-size: 1.2rem;
     justify-content: space-around;
-
     width: 98%;
     margin: 0 auto;
     margin-bottom: 2rem;
@@ -32,10 +31,39 @@
     color: #969696;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
     .filters {
         width: 90%;
+
     }
+    .diets h4{
+        display: none;
+    }
+
   }
   
+  @media (max-width: 767px) {
+    .filters {
+        flex-direction: column;
+    }
+    .cuisines-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: baseline;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    
+    .cuisines-list{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: baseline;
+    }
+    .listOfDiets {
+        justify-content: center;
+    }
+  }
  

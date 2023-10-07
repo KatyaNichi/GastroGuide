@@ -5,6 +5,7 @@ import Header from '../../components/common/Header/Header';
 import Stopwatch from '../../components/common/Stopwatch/Stopwatch';
 import { UserContext } from '../../components/UserContext';
 import { UserContextType } from '../../components/UserContext';
+import { getBaseUrl } from '../../services/api';
 import './RecipePage.css';
 
 
@@ -14,11 +15,12 @@ function RecipePage() {
   const navigate = useNavigate(); 
   const userContext = useContext(UserContext) as UserContextType;
   const [isFavorite, setIsFavorite] = useState(false); 
+  const fallbackImage = '../../../../../assets/images/secret-dish.jpg';
 
   useEffect(() => {
     const fetchUserFavorites = async () => {
       try {
-        const response = await fetch(`/srv/api/favorites/user/${userContext.userId}`);
+        const response = await fetch(getBaseUrl(`/srv/api/favorites/user/${userContext.userId}`));
         
         if (response.ok) {
           const favoritesData = await response.json();
@@ -45,7 +47,7 @@ const toggleFavorite = useCallback(async () => {
     try {
       let response;
       if (isFavorite) {
-        response = await fetch('/srv/api/favorites/remove', {
+        response = await fetch(getBaseUrl('/srv/api/favorites/remove'), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -56,7 +58,7 @@ const toggleFavorite = useCallback(async () => {
           }),
         });
       } else {
-        response = await fetch('/srv/api/favorites/add', {
+        response = await fetch(getBaseUrl('/srv/api/favorites/add'), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -95,7 +97,7 @@ const toggleFavorite = useCallback(async () => {
       </div>
       <div className='recipe-container'>
         <h2>{currentRecipe.title}</h2>
-        <img src={currentRecipe.image} alt={currentRecipe.title} />
+        <img src={currentRecipe.image || fallbackImage} alt={currentRecipe.title} />
         {userContext.isLoggedIn && (
           <button onClick={toggleFavorite} className='custom-button' id="favorite-button">
             {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}

@@ -1,5 +1,5 @@
 .categories-grid {
-    width: 80%;
+    width: 85%;
     display: grid;
     grid-template-columns: repeat(3, 30%);
     grid-template-rows: repeat(4, auto);

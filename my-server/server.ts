@@ -32,7 +32,17 @@ connect();
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 
-app.post('/api/signup', async (req: Request, res: Response) => {
+function getBaseUrls( url: string) {
+  
+  if (process.env.ENV === undefined) {
+    return url    
+  }
+
+  
+  return '/srv/'+url
+}
+
+app.post(getBaseUrls('/api/signup'), async (req: Request, res: Response) => {
   try {
     const newUser = await User.create(req.body); 
     console.log('User created:', newUser);
@@ -43,7 +53,7 @@ app.post('/api/signup', async (req: Request, res: Response) => {
   }
 });
 
-app.post('/api/login', async (req: Request, res: Response) => {
+app.post(getBaseUrls('/api/login'), async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email, password }).exec();
@@ -53,7 +63,7 @@ app.post('/api/login', async (req: Request, res: Response) => {
       res.status(401).json({ error: 'Invalid credentials' });
     }
   } catch (error) {
-    console.error('Error during login:', error);
+    console.error('Error during   :', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

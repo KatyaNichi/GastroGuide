@@ -1,6 +1,7 @@
 import  { useState, ChangeEvent, FormEvent } from 'react';
 import Header from '../../components/common/Header/Header';
 import Popup from '../../components/common/Popup/Popup';
+import { getBaseUrl } from '../../services/api';
 import './SignUpPage.css';
 
 interface FormData {
@@ -27,7 +28,7 @@ function SignUp() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch('/srv/api/signup', {
+      const response = await fetch(getBaseUrl('/api/signup'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

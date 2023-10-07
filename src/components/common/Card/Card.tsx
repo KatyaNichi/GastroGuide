@@ -18,7 +18,7 @@ export default function Card({ recipeId, image, title, readyInMinutes }: CardPro
       <div className="bottom-card">
         <div className="time-description">
           <img src="../../../../../public/assets/images/clock-solid.svg" alt="Clock" className="imgClock" />
-          {readyInMinutes} minutes
+          {readyInMinutes} min
         </div>
         <Link to={`/recipes/${recipeId}`} className="view-recipe-button">
           View Recipe
