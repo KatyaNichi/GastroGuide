@@ -39,6 +39,20 @@ cd
 
 npm start
 
+
+## Deployment
+
+You can access the deployed application at the following link:
+
+[Live Demo](https://goldfish-app-uji6v.ondigitalocean.app/)
+
+## Testing Credentials
+
+For testing purposes, you can use the following credentials:
+
+- **Email:** anna@test.se
+- **Password:** ann123
+
 ### Author
 
 [KatyaNichi](https://github.com/KatyaNichi) - Your GitHub Profile
