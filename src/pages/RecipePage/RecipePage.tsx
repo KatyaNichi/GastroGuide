@@ -47,7 +47,7 @@ const toggleFavorite = useCallback(async () => {
     try {
       let response;
       if (isFavorite) {
-        response = await fetch(getBaseUrl('/srv/api/favorites/remove'), {
+        response = await fetch(getBaseUrl('/api/favorites/remove'), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const toggleFavorite = useCallback(async () => {
           }),
         });
       } else {
-        response = await fetch(getBaseUrl('/srv/api/favorites/add'), {
+        response = await fetch(getBaseUrl('/api/favorites/add'), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
