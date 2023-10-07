@@ -45,31 +45,27 @@ function RecipePage() {
   //   }
   // }, [userContext.isLoggedIn, userContext.userId, recipeId, isFavorite]);
 
-  const fetchUserFavorites = useCallback(async () => {
-    try {
-      const response = await fetch(getBaseUrl(`/api/favorites/user/${userContext.userId}`));
-
-      if (response.ok) {
-        const favoritesData = await response.json();
-
-        const isRecipeInFavorites = favoritesData.favorites.includes(recipeId);
-        setIsFavorite(isRecipeInFavorites);
-      } else {
-        console.error('Failed to fetch user favorites');
+  useEffect(() => {
+    const fetchUserFavorites = async () => {
+      try {
+        if (userContext.isLoggedIn) {
+          const response = await fetch(getBaseUrl(`/api/favorites/user/${userContext.userId}`));
+        
+          if (response.ok) {
+            const favoritesData = await response.json();
+            const isRecipeInFavorites = favoritesData.favorites.includes(recipeId);
+            setIsFavorite(isRecipeInFavorites);
+          } else {
+            console.error('Failed to fetch user favorites');
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user favorites:', error);
       }
-    } catch (error) {
-      console.error('Error fetching user favorites:', error);
-    }
-  }, [userContext.userId, recipeId]);
+    };
 
-  useEffect(() => {
-    if (userContext.isLoggedIn) {
-      fetchUserFavorites();
-    }
-  }, [userContext.isLoggedIn, fetchUserFavorites]);
-  useEffect(() => {
-    fetchUserFavorites(); // Fetch user favorites whenever recipeId changes
-  }, [recipeId, fetchUserFavorites]);
+    fetchUserFavorites();
+  }, [userContext.isLoggedIn, userContext.userId, recipeId]);
 
 const toggleFavorite = useCallback(async () => {
   if (userContext.isLoggedIn) {
@@ -85,6 +81,7 @@ const toggleFavorite = useCallback(async () => {
             userId: userContext.userId,
             recipeId: recipeId?.toString() ,
           }),
+          
         });
       } else {
         response = await fetch(getBaseUrl('/api/favorites/add'), {
@@ -100,6 +97,9 @@ const toggleFavorite = useCallback(async () => {
       }
       if (response.ok) {
         console.log(isFavorite ? 'Removed from favorites' : 'Added to favorites');
+        const updatedFavorites = [...userContext.favorites, recipeId as string];
+          userContext.setFavorites(updatedFavorites);
+          setIsFavorite(true);
         setIsFavorite((prevIsFavorite) => !prevIsFavorite);
     
         if (isFavorite) {
@@ -114,7 +114,7 @@ const toggleFavorite = useCallback(async () => {
   } else {
     console.log('User is not logged in');
   }
-}, [userContext.isLoggedIn, userContext.userId, recipeId, isFavorite, navigate]);
+}, [userContext, isFavorite, recipeId, navigate]);
 
   const currentRecipe = recipes.find((recipe) => recipe.id === Number(recipeId));
   if (!currentRecipe) {
