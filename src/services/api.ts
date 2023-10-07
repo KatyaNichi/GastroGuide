@@ -21,6 +21,6 @@
 
 
 export const getBaseUrl=  ( url: string) => {
-  return url;
+  return '/srv'+url
 }
 
