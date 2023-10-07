@@ -13,8 +13,8 @@ Features
 
 ## Tech Stack
 
- - **Frontend:_ React, Vite, TypeScript** 
- - **Backend:_ Node.js, Express.js, MongoDB** 
+ - **Frontend:** React, Vite, TypeScript** 
+ - **Backend:** Node.js, Express.js, MongoDB** 
 
 ## Prerequisites
 
