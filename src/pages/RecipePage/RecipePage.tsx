@@ -10,11 +10,12 @@ import './RecipePage.css';
 
 
 function RecipePage() {
-  const { recipeId } = useParams(); 
+  const recipeId = useParams()?.recipeId ?? '';
   const { recipes } = useRecipes(); 
   const navigate = useNavigate(); 
   const userContext = useContext(UserContext) as UserContextType;
   const [isFavorite, setIsFavorite] = useState(false); 
+  const { favorites } = userContext;
   const fallbackImage = '../../../../../assets/images/secret-dish.jpg';
 
   
@@ -49,19 +50,15 @@ function RecipePage() {
       
       if (response.ok) {
         const favoritesData = await response.json();
-        
-        const isRecipeInFavorites = favoritesData.favorites.includes(recipeId);
-        console.log(favoritesData)
-        console.log(recipeId)
-        console.log(isRecipeInFavorites)
-        setIsFavorite(isRecipeInFavorites);
+        setIsFavorite(favoritesData.favorites); // Update the favorites state directly
       } else {
         console.error('Failed to fetch user favorites');
       }
     } catch (error) {
       console.error('Error fetching user favorites:', error);
     }
-  }, [userContext.userId, recipeId]);
+  }, [userContext.userId]);
+  
   
   useEffect(() => {
     if (userContext.isLoggedIn) {
@@ -69,47 +66,50 @@ function RecipePage() {
     }
   }, [userContext.isLoggedIn, fetchUserFavorites]);
 
-const toggleFavorite = useCallback(async () => {
-  if (userContext.isLoggedIn) {
-    try {
-      let response;
-      if (isFavorite) {
-        response = await fetch(getBaseUrl('/api/favorites/remove'), {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            userId: userContext.userId,
-            recipeId: recipeId?.toString() ,
-          }),
-        });
-      } else {
-        response = await fetch(getBaseUrl('/api/favorites/add'), {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            userId: userContext.userId,
-            recipeId: recipeId?.toString(),
-          }),
-        });
+  const toggleFavorite = useCallback(async () => {
+    if (userContext.isLoggedIn) {
+      try {
+        let response;
+        if (favorites.includes(recipeId)) {
+          response = await fetch(getBaseUrl('/api/favorites/remove'), {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              userId: userContext.userId,
+              recipeId: recipeId?.toString(),
+            }),
+          });
+        } else {
+          response = await fetch(getBaseUrl('/api/favorites/add'), {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              userId: userContext.userId,
+              recipeId: recipeId?.toString(),
+            }),
+          });
+        }
+        if (response.ok) {
+          console.log(favorites.includes(recipeId) ? 'Removed from favorites' : 'Added to favorites');
+          fetchUserFavorites(); // Fetch user favorites again to refresh the list
+          if (favorites.includes(recipeId)) {
+            navigate(-1);
+          }
+        } else {
+          console.error('Failed to toggle favorites');
+        }
+      } catch (error) {
+        console.error('Error toggling favorites:', error);
       }
-      if (response.ok) {
-        console.log(isFavorite ? 'Removed from favorites' : 'Added to favorites');
-        setIsFavorite((prevIsFavorite) => !prevIsFavorite);
-        fetchUserFavorites();
-      } else {
-        console.error('Failed to toggle favorites');
-      }
-    } catch (error) {
-      console.error('Error toggling favorites:', error);
+    } else {
+      console.log('User is not logged in');
     }
-  } else {
-    console.log('User is not logged in');
-  }
-}, [userContext.isLoggedIn, userContext.userId, recipeId, isFavorite, fetchUserFavorites]);
+  }, [userContext.isLoggedIn, userContext.userId, recipeId, favorites, navigate, fetchUserFavorites]);
+  
 
   const currentRecipe = recipes.find((recipe) => recipe.id === Number(recipeId));
   if (!currentRecipe) {
