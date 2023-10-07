@@ -17,6 +17,8 @@ function RecipePage() {
   const [isFavorite, setIsFavorite] = useState(false); 
   const fallbackImage = '../../../../../assets/images/secret-dish.jpg';
 
+  
+
   useEffect(() => {
     const fetchUserFavorites = async () => {
       try {
@@ -40,7 +42,7 @@ function RecipePage() {
     if (userContext.isLoggedIn) {
       fetchUserFavorites();
     }
-  }, [userContext.isLoggedIn, userContext.userId, recipeId]);
+  }, [userContext.isLoggedIn, userContext.userId, recipeId, isFavorite]);
 
 const toggleFavorite = useCallback(async () => {
   if (userContext.isLoggedIn) {
@@ -72,7 +74,10 @@ const toggleFavorite = useCallback(async () => {
       if (response.ok) {
         console.log(isFavorite ? 'Removed from favorites' : 'Added to favorites');
         setIsFavorite((prevIsFavorite) => !prevIsFavorite);
-
+    
+        if (isFavorite) {
+          navigate(-1);
+        }
       } else {
         console.error('Failed to toggle favorites');
       }
@@ -82,7 +87,7 @@ const toggleFavorite = useCallback(async () => {
   } else {
     console.log('User is not logged in');
   }
-}, [userContext.isLoggedIn, userContext.userId, recipeId, isFavorite]);
+}, [userContext.isLoggedIn, userContext.userId, recipeId, isFavorite, navigate]);
 
   const currentRecipe = recipes.find((recipe) => recipe.id === Number(recipeId));
   if (!currentRecipe) {
