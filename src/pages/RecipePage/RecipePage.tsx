@@ -47,7 +47,7 @@ function RecipePage() {
   const fetchUserFavorites = useCallback(async () => {
     try {
       const response = await fetch(getBaseUrl(`/api/favorites/user/${userContext.userId}`));
-      
+      console.log('fetchUserFavorites' + response);
       if (response.ok) {
         const favoritesData = await response.json();
         setIsFavorite(favoritesData.favorites); // Update the favorites state directly
