@@ -17,32 +17,56 @@ function RecipePage() {
   const [isFavorite, setIsFavorite] = useState(false); 
   const fallbackImage = '../../../../../assets/images/secret-dish.jpg';
 
+
   
 
-  useEffect(() => {
-    const fetchUserFavorites = async () => {
-      try {
-        const response = await fetch(getBaseUrl(`/api/favorites/user/${userContext.userId}`));
+  // useEffect(() => {
+  //   const fetchUserFavorites = async () => {
+  //     try {
+  //       const response = await fetch(getBaseUrl(`/api/favorites/user/${userContext.userId}`));
         
-        if (response.ok) {
-          const favoritesData = await response.json();
+  //       if (response.ok) {
+  //         const favoritesData = await response.json();
           
-          const isRecipeInFavorites = favoritesData.favorites.includes(recipeId);
-          console.log(favoritesData)
-          console.log(recipeId)
-          console.log(isRecipeInFavorites)
-          setIsFavorite(isRecipeInFavorites);
-        } else {
-          console.error('Failed to fetch user favorites');
-        }
-      } catch (error) {
-        console.error('Error fetching user favorites:', error);
+  //         const isRecipeInFavorites = favoritesData.favorites.includes(recipeId);
+  //         console.log(favoritesData)
+  //         console.log(recipeId)
+  //         console.log(isRecipeInFavorites)
+  //         setIsFavorite(isRecipeInFavorites);
+  //       } else {
+  //         console.error('Failed to fetch user favorites');
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching user favorites:', error);
+  //     }
+  //   };
+  //   if (userContext.isLoggedIn) {
+  //     fetchUserFavorites();
+  //   }
+  // }, [userContext.isLoggedIn, userContext.userId, recipeId, isFavorite]);
+
+  const fetchUserFavorites = useCallback(async () => {
+    try {
+      const response = await fetch(getBaseUrl(`/api/favorites/user/${userContext.userId}`));
+
+      if (response.ok) {
+        const favoritesData = await response.json();
+
+        const isRecipeInFavorites = favoritesData.favorites.includes(recipeId);
+        setIsFavorite(isRecipeInFavorites);
+      } else {
+        console.error('Failed to fetch user favorites');
       }
-    };
+    } catch (error) {
+      console.error('Error fetching user favorites:', error);
+    }
+  }, [userContext.userId, recipeId]);
+
+  useEffect(() => {
     if (userContext.isLoggedIn) {
       fetchUserFavorites();
     }
-  }, [userContext.isLoggedIn, userContext.userId, recipeId, isFavorite]);
+  }, [userContext.isLoggedIn, fetchUserFavorites]);
 
 const toggleFavorite = useCallback(async () => {
   if (userContext.isLoggedIn) {
