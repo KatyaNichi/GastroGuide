@@ -67,6 +67,9 @@ function RecipePage() {
       fetchUserFavorites();
     }
   }, [userContext.isLoggedIn, fetchUserFavorites]);
+  useEffect(() => {
+    fetchUserFavorites(); // Fetch user favorites whenever recipeId changes
+  }, [recipeId, fetchUserFavorites]);
 
 const toggleFavorite = useCallback(async () => {
   if (userContext.isLoggedIn) {
