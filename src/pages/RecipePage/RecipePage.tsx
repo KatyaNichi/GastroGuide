@@ -16,57 +16,32 @@ function RecipePage() {
   const userContext = useContext(UserContext) as UserContextType;
   const [isFavorite, setIsFavorite] = useState(false); 
   const fallbackImage = '../../../../../assets/images/secret-dish.jpg';
-  console.log("userContext.favorites" + userContext.favorites);
-
-
   
 
-  // useEffect(() => {
-  //   const fetchUserFavorites = async () => {
-  //     try {
-  //       const response = await fetch(getBaseUrl(`/api/favorites/user/${userContext.userId}`));
-        
-  //       if (response.ok) {
-  //         const favoritesData = await response.json();
-          
-  //         const isRecipeInFavorites = favoritesData.favorites.includes(recipeId);
-  //         console.log(favoritesData)
-  //         console.log(recipeId)
-  //         console.log(isRecipeInFavorites)
-  //         setIsFavorite(isRecipeInFavorites);
-  //       } else {
-  //         console.error('Failed to fetch user favorites');
-  //       }
-  //     } catch (error) {
-  //       console.error('Error fetching user favorites:', error);
-  //     }
-  //   };
-  //   if (userContext.isLoggedIn) {
-  //     fetchUserFavorites();
-  //   }
-  // }, [userContext.isLoggedIn, userContext.userId, recipeId, isFavorite]);
+  
 
   useEffect(() => {
     const fetchUserFavorites = async () => {
       try {
-        if (userContext.isLoggedIn) {
-          const response = await fetch(getBaseUrl(`/api/favorites/user/${userContext.userId}`));
+        const response = await fetch(getBaseUrl(`/api/favorites/user/${userContext.userId}`));
         
-          if (response.ok) {
-            const favoritesData = await response.json();
-            const isRecipeInFavorites = favoritesData.favorites.includes(recipeId);
-            setIsFavorite(isRecipeInFavorites);
-          } else {
-            console.error('Failed to fetch user favorites');
-          }
+        if (response.ok) {
+          const favoritesData = await response.json();
+          
+          const isRecipeInFavorites = favoritesData.favorites.includes(recipeId);
+          console.log(favoritesData.favorites);
+          setIsFavorite(isRecipeInFavorites);
+        } else {
+          console.error('Failed to fetch user favorites');
         }
       } catch (error) {
         console.error('Error fetching user favorites:', error);
       }
     };
-
-    fetchUserFavorites();
-  }, [userContext.isLoggedIn, userContext.userId, recipeId]);
+    if (userContext.isLoggedIn) {
+      fetchUserFavorites();
+    }
+  }, [userContext.isLoggedIn, userContext.userId, recipeId, isFavorite]);
 
 const toggleFavorite = useCallback(async () => {
   if (userContext.isLoggedIn) {
@@ -82,7 +57,6 @@ const toggleFavorite = useCallback(async () => {
             userId: userContext.userId,
             recipeId: recipeId?.toString() ,
           }),
-          
         });
       } else {
         response = await fetch(getBaseUrl('/api/favorites/add'), {
@@ -98,10 +72,6 @@ const toggleFavorite = useCallback(async () => {
       }
       if (response.ok) {
         console.log(isFavorite ? 'Removed from favorites' : 'Added to favorites');
-        const updatedFavorites = [...userContext.favorites, recipeId as string];
-          userContext.setFavorites(updatedFavorites);
-          console.log("updatedFavorites" + updatedFavorites)
-          setIsFavorite(true);
         setIsFavorite((prevIsFavorite) => !prevIsFavorite);
     
         if (isFavorite) {
@@ -116,7 +86,7 @@ const toggleFavorite = useCallback(async () => {
   } else {
     console.log('User is not logged in');
   }
-}, [userContext, isFavorite, recipeId, navigate]);
+}, [userContext.isLoggedIn, userContext.userId, recipeId, isFavorite, navigate]);
 
   const currentRecipe = recipes.find((recipe) => recipe.id === Number(recipeId));
   if (!currentRecipe) {
