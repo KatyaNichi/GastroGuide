@@ -3,18 +3,18 @@
 Welcome to GastroGuide, a Single Page Application (SPA) that helps you discover and explore new recipes. GastroGuide provides a platform to find exciting recipes, filter them by cooking time, dietary preferences, and cuisine, and allows you to save your favorite recipes for easy access.
 Features
 
-    **Discover New Recipes:** Explore a diverse collection of recipes to try something new every day.
+- **Discover New Recipes:** Explore a diverse collection of recipes to try something new every day.
 
-    **Filter**: Easily find recipes based on cooking time, dietary restrictions, and cuisine preferences.
+- **Filter:**  Easily find recipes based on cooking time, dietary restrictions, and cuisine preferences.
 
-    **User Authentication:** Create an account, log in, and manage your profile.
+- **User Authentication:** Create an account, log in, and manage your profile.
 
-    **Save Favorites:** Save your favorite recipes for quick access and a personalized experience.
+- **Save Favorites:** Save your favorite recipes for quick access and a personalized experience.
 
 ## Tech Stack
 
-    _Frontend:_ React, Vite, TypeScript
-    _Backend:_ Node.js, Express.js, MongoDB
+ - **Frontend:_ React, Vite, TypeScript** 
+ - **Backend:_ Node.js, Express.js, MongoDB** 
 
 ## Prerequisites
 
