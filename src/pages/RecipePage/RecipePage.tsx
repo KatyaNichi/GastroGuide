@@ -20,7 +20,7 @@ function RecipePage() {
   useEffect(() => {
     const fetchUserFavorites = async () => {
       try {
-        const response = await fetch(getBaseUrl(`/srv/api/favorites/user/${userContext.userId}`));
+        const response = await fetch(getBaseUrl(`/api/favorites/user/${userContext.userId}`));
         
         if (response.ok) {
           const favoritesData = await response.json();

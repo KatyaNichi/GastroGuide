@@ -37,8 +37,6 @@ function getBaseUrls( url: string) {
   if (process.env.ENV === undefined) {
     return url    
   }
-
-  
   return '/srv/'+url
 }
 
