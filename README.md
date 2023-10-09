@@ -55,7 +55,7 @@ For testing purposes, you can use the following credentials:
 
 ### Author
 
-[KatyaNichi](https://github.com/KatyaNichi) - Your GitHub Profile
+[KatyaNichi](https://github.com/KatyaNichi) - My GitHub Profile
 
 
 Enjoy exploring new recipes and culinary delights with GastroGuide!
