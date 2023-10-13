@@ -22,14 +22,14 @@
     display: flex;
     gap: 0.7rem;
    width: 100%;
-    color: #969696;
+    color: #878787;
     flex-wrap: wrap;
 }
 .listOfDiets label {
     cursor: pointer;
 }
 .filters option {
-    color: #969696;
+    color: #878787;
 }
 
 @media (max-width: 1023px) {

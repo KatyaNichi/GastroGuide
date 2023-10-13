@@ -6,7 +6,7 @@
     gap: 3rem;
 }
 .time-description{
-    color: #969696;
+    color: #878787;
 }
 @media (max-width: 1024px) {
     .categories-grid {
