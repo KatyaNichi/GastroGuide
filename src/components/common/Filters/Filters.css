@@ -9,6 +9,9 @@
     margin-bottom: 2rem;
     padding-right: 1rem;
 }
+.diets{
+    width: 100%;
+}
 .filters h4 {
     margin-bottom: 1rem;
 }
@@ -27,6 +30,8 @@
 }
 .listOfDiets label {
     cursor: pointer;
+    margin-right: 1%;
+    font-size: 1.2rem;
 }
 .filters option {
     color: #787878;
