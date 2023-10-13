@@ -1,5 +1,5 @@
 .side-nav {
-    color: #878787;
+    color: #787878;
     width: 5%;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@
   transform: rotate(180deg);
   margin-top: 5rem;
   font-size: 1.4rem;
-  color: #878787;
+  color: #787878;
 }  
 .side-nav li:hover {
   color: #408EBA;
