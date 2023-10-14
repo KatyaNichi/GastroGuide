@@ -14,3 +14,8 @@
   background-color: #F0F7FF;
   color: #408EBA;
 }
+@media (max-width: 767px) {
+  .main-categories  {
+    flex-direction: column;
+  }
+}

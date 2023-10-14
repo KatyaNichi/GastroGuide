@@ -32,9 +32,22 @@
 
   @media (max-width: 767px) {
     .side-nav {
-      margin-top: -4.5rem;
-      margin-left: 1rem;
+    margin: 1rem auto;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 96%;
+    align-items: center;
     }
+    .side-nav li {
+      cursor: pointer;
+      writing-mode: horizontal-tb; 
+      text-orientation: initial;
+      transform: rotate(0deg);
+      margin-top: 0;
+      font-size: 1.2rem;
+      color: #787878;
+      
+    }  
   }
   
   

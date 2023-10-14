@@ -51,6 +51,7 @@
   @media (max-width: 767px) {
     .filters {
         flex-direction: column;
+        margin-bottom: 0;
     }
     .cuisines-list {
         display: flex;

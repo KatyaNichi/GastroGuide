@@ -16,6 +16,8 @@
   @media (max-width: 767px) {
     .categories-grid {
         grid-template-columns: repeat(1, 95%);
+        width: 98%;
+        margin: 0 auto;
     }
   }
   

@@ -35,7 +35,6 @@
 .time-description{
     display: flex;
     align-items: center;
-    margin-top: 1rem;
 }
 .imgClock{
     width: 10%;
@@ -50,10 +49,13 @@
     border-radius: 0.6rem;  
 }
 .bottom-card {
+  justify-content: space-around;
+    width: 100%;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     align-self: flex-end; 
     margin: 0 auto;
+    margin-top: 1rem;
 }
 .favorite-button-container::before {
     content: "";
