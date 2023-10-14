@@ -87,5 +87,10 @@
       width: 100%;
       border-radius: 0.6rem;  
   }
+  @-moz-document url-prefix() {
+    .view-recipe-button {
+      width: 40%;
+    }
+  }
     
   }
