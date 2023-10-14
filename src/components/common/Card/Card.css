@@ -46,6 +46,9 @@
     height: auto; 
     margin-right: 1rem;
   }
+  .view-recipe-button {
+    width: 40%;
+  }
 }
 .view-recipe-button{
     color: #fff;
